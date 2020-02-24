@@ -19,5 +19,7 @@ WebUI.openBrowser('')
 
 WebUI.navigateToUrl(GlobalVariable.url)
 
+WebUI.click(findTestObject(null))
+
 WebUI.closeBrowser(FailureHandling.STOP_ON_FAILURE)
 

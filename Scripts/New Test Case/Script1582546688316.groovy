@@ -14,6 +14,11 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
 
-Mobile.startExistingApplication('', FailureHandling.STOP_ON_FAILURE)
+WebUI.openBrowser('www.youtube.com')
+
+WebUI.callTestCase(findTestCase('Mix'), [('path') : 'www.google.com'])
+
+WebUI.delay(3)
 

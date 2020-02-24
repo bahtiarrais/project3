@@ -14,12 +14,25 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+import org.openqa.selenium.JavascriptExecutor as JavascriptExecutor
+import org.openqa.selenium.WebDriver as WebDriver
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
 
-WebUI.openBrowser('')
+String currentPage = WebUI.getUrl()
 
-WebUI.navigateToUrl(GlobalVariable.url)
+int currentTab = WebUI.getWindowIndex()
 
-WebUI.click(findTestObject(null))
+WebDriver driver = DriverFactory.getWebDriver()
 
-WebUI.closeBrowser(FailureHandling.STOP_ON_FAILURE)
+JavascriptExecutor js = ((driver) as JavascriptExecutor)
 
+js.executeScript('window.open();')
+
+WebUI.switchToWindowIndex(currentTab + 1)
+
+WebUI.navigateToUrl(path)
+
+WebUI.switchToWindowIndex(currentTab)
+
+WebUI.navigateToUrl(currentPage)
